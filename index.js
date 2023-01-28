@@ -6,6 +6,13 @@ const winnerEl = document.getElementById("winner-el")
 const chooseEl = document.getElementById("choose-el")
 const scoreEl = document.getElementById("score-el")
 
+// Animation elements (ids of sections in html)
+
+const mainGame = document.getElementById("main-game")
+const houseAnimationImg = document.getElementById("house-animation-img")
+const storyElOne = document.getElementById("story-el-one")
+const storyElTwo = document.getElementById("story-el-two")
+
 let choiceArray = ["Rock", "Paper", "Scissors"]
 let playerWins = 0
 let computerWins = 0
@@ -19,6 +26,22 @@ document.addEventListener("DOMContentLoaded", function(){
     startGame()
     chooseEl.innerText = `Player:  | Computer:`
     winnerEl.innerText = `Choose above`
+    houseAnimationImg.style.display = "flex"
+    
+    setTimeout(function(){
+        storyElOne.style.display = "flex"
+        houseAnimationImg.style.display = "none"
+    }, 3000)
+    setTimeout(function(){
+        storyElOne.style.display = "none"
+        storyElTwo.style.display = "flex"
+    }, 8000)
+    setTimeout(function(){
+        storyElTwo.style.display = "none"
+        mainGame.style.display = "flex"
+    }, 12000)
+
+
 })
 
 function startGame(){

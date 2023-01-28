@@ -10,6 +10,8 @@ body {
 }
 
 main{
+    min-height: 80vh;
+    min-width: 80vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,4 +44,44 @@ p {
 
 .winner {
     padding-bottom: 20px;
+}
+
+.main-game {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.house-animation-img {
+    display: flex;
+    animation-name: fadeImg;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeImg {
+    from {opacity: 1.0;}
+    to {opacity: 0.0;}
+}
+
+.story-el-one {
+    display: none;
+    opacity: 0.0;
+    animation: textOne 2s forwards;
+}
+
+@keyframes textOne {
+    from {opacity: 0.0;}
+    to {opacity: 1.0;}
+}
+
+.story-el-two {
+    display: none;
+    animation: textTwo 2s 5s forwards;
+}
+
+@keyframes textTwo {
+    from {opacity: 0.0;}
+    to {opacity: 1.0;}
 }
