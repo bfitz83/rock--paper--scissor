@@ -34,15 +34,15 @@ document.addEventListener("DOMContentLoaded", function(){
     setTimeout(function(){
         storyElOne.style.display = "flex"
         houseAnimationImg.style.display = "none"
-    }, 3000)
+    }, 4000)
     setTimeout(function(){
         storyElOne.style.display = "none"
         storyElTwo.style.display = "flex"
-    }, 8000)
+    }, 9000)
     setTimeout(function(){
         storyElTwo.style.display = "none"
         mainGame.style.display = "flex"
-    }, 12000)
+    }, 13000)
 
 
 })

@@ -66,6 +66,11 @@ p {
     animation-fill-mode: forwards;
 }
 
+.house-animation-img img {
+    width: 75vw;
+    height: 75vh;
+}
+
 @keyframes fadeImg {
     from {opacity: 1.0;}
     to {opacity: 0.0;}
@@ -74,7 +79,7 @@ p {
 .story-el-one {
     display: none;
     opacity: 0.0;
-    animation: textOne 2s forwards;
+    animation: textOne 3s forwards;
 }
 
 @keyframes textOne {
@@ -84,7 +89,7 @@ p {
 
 .story-el-two {
     display: none;
-    animation: textTwo 2s 5s forwards;
+    animation: textTwo 3s 6s forwards;
 }
 
 @keyframes textTwo {
