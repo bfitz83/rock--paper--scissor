@@ -1,3 +1,6 @@
+// import {badGuyTaunts} from ("data.js")
+// import {badGuyLoosing} from ("data.js")
+
 const rockEl = document.getElementById("rock-el")
 const paperEl = document.getElementById("paper-el")
 const scissorEl = document.getElementById("scissor-el")
@@ -98,7 +101,7 @@ function checkWinner(){
         winnerEl.innerText = `Choose above`
         
         scoreEl.innerText = `Player score: ${playerWins} Computer score: ${computerWins}`
-    }, 3000)
+    }, 1500)
 
 }
 

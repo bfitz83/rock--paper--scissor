@@ -42,6 +42,12 @@ p {
     margin: 0;
 }
 
+.players-charactures {
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+
 .winner {
     padding-bottom: 20px;
 }
