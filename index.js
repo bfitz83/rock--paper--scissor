@@ -15,10 +15,15 @@ const mainGame = document.getElementById("main-game")
 const houseAnimationImg = document.getElementById("house-animation-img")
 const storyElOne = document.getElementById("story-el-one")
 const storyElTwo = document.getElementById("story-el-two")
+const playerProgressBar = document.getElementById("player-progress-bar")
+const vilanProgressBar = document.getElementById("vilan-progress-bar")
 
 let choiceArray = ["Rock", "Paper", "Scissors"]
 let playerWins = 0
 let computerWins = 0
+let playerHealth = 100
+let vilanHeatlth = 100
+
 
 
 
@@ -38,11 +43,11 @@ document.addEventListener("DOMContentLoaded", function(){
     setTimeout(function(){
         storyElOne.style.display = "none"
         storyElTwo.style.display = "flex"
-    }, 9000)
+    }, 10000)
     setTimeout(function(){
         storyElTwo.style.display = "none"
         mainGame.style.display = "flex"
-    }, 13000)
+    }, 14000)
 
 
 })
@@ -71,29 +76,42 @@ scissorEl.addEventListener("click", function(){
     checkWinner()
 })
 
-
+// Now go through and make the winnerEl.innertext cycle through the bad guy speaches *******************************
 
 function checkWinner(){
     chooseEl.innerText = `Player: ${playerChoice} | Computer: ${computerChoice}`
-    if (playerChoice === computerChoice){
-        
-        winnerEl.innerText = "Tie"
-    } else if(playerChoice === choiceArray[0] && computerChoice === choiceArray[2]) {
-        
-        winnerEl.innerText = "Player wins"
-        playerWins += 1
-    } else if(playerChoice === choiceArray[1] && computerChoice === choiceArray[0]){
-        
-        winnerEl.innerText = "Player wins"
-        playerWins += 1
-    } else if (playerChoice === choiceArray[2] && computerChoice === choiceArray[1]){
-        
-        winnerEl.innerText = "Player wins"
-        playerWins += 1
+    if (playerHealth != 0){
+        if (playerChoice === computerChoice){
+            
+            winnerEl.innerText = "Tie"
+        } else if(playerChoice === choiceArray[0] && computerChoice === choiceArray[2]) {
+            
+            winnerEl.innerText = "Player wins"
+            playerWins += 1
+            vilanHeatlth -= 25
+            vilanProgressBar.value = vilanHeatlth
+        } else if(playerChoice === choiceArray[1] && computerChoice === choiceArray[0]){
+            
+            winnerEl.innerText = "Player wins"
+            playerWins += 1
+            vilanHeatlth -= 25
+            vilanProgressBar.value = vilanHeatlth
+        } else if (playerChoice === choiceArray[2] && computerChoice === choiceArray[1]){
+            
+            winnerEl.innerText = "Player wins"
+            playerWins += 1
+            vilanHeatlth -= 25
+            vilanProgressBar.value = vilanHeatlth
+        } else {
+            
+            winnerEl.innerText = "Computer wins"
+            computerWins += 1
+            playerHealth -= 25
+            playerProgressBar.value = playerHealth
+        }
     } else {
-        
-        winnerEl.innerText = "Computer wins"
-        computerWins += 1
+        winnerEl.innerText = "you loose"
+        // This needs to end game *************************************************************
     }
     setTimeout(function(){
         startGame()

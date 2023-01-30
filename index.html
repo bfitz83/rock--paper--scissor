@@ -13,14 +13,23 @@
             <h1>Rock, Paper, Scissors</h1>
             <div class="choice-el">
                 <div class="players-charactures">
-                    <img src="" alt="player-avatar">
-                    <p id="score-el">Player score: 0 Computer score: 0</p>
-                    <img src="" alt="bad-guy-avatar">
+                    <div>
+                        <img src="" alt="player-avatar">
+                        <progress id="player-progress-bar" value="100" max="100"></progress>
+                    </div>
+                    
+                    <!-- <p id="score-el">Player score: 0 Computer score: 0</p> -->
+                    <div>
+                        <img src="" alt="bad-guy-avatar">
+                        <progress id="vilan-progress-bar" value="100" max="100"></progress>
+                    </div>
                 </div>
                 
-                <button id="rock-el"><img src="/images/rock.png" alt="Rock"></button>
-                <button id="paper-el"><img src="/images/paper.png" alt="Paper"></button>
-                <button id="scissor-el"><img src="/images/scissors.png" alt="Scissors"></button>
+                    <div>
+                        <button id="rock-el"><img src="/images/rock.png" alt="Rock"></button>
+                        <button id="paper-el"><img src="/images/paper.png" alt="Paper"></button>
+                        <button id="scissor-el"><img src="/images/scissors.png" alt="Scissors"></button>
+                    </div>
             </div>
             
             <p id="choose-el"></p>

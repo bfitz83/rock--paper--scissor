@@ -44,8 +44,14 @@ p {
 
 .players-charactures {
     display: flex;
+    justify-content: center;
     padding: 0;
     margin: 0;
+}
+
+.choice-el {
+    display: flex;
+    flex-direction: column;
 }
 
 .winner {
@@ -89,10 +95,11 @@ p {
 
 .story-el-two {
     display: none;
-    animation: textTwo 3s 6s forwards;
+    animation: textTwo 4s 7s forwards;
 }
 
 @keyframes textTwo {
     from {opacity: 0.0;}
     to {opacity: 1.0;}
 }
+
