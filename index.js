@@ -1,39 +1,21 @@
 // import {badGuyTaunts} from ("data.js")
 // import {badGuyLoosing} from ("data.js")
 
-const rockEl = document.getElementById("rock-el")
-const paperEl = document.getElementById("paper-el")
-const scissorEl = document.getElementById("scissor-el")
-const choiceEl = document.getElementById("choice-el")
-const winnerEl = document.getElementById("winner-el")
-const chooseEl = document.getElementById("choose-el")
-const scoreEl = document.getElementById("score-el")
 
-// Animation elements (ids of sections in html)
+// const chooseEl = document.getElementById("choose-el")  ------ currently not used
 
-const mainGame = document.getElementById("main-game")
-const houseAnimationImg = document.getElementById("house-animation-img")
-const storyElOne = document.getElementById("story-el-one")
-const storyElTwo = document.getElementById("story-el-two")
-const playerProgressBar = document.getElementById("player-progress-bar")
-const vilanProgressBar = document.getElementById("vilan-progress-bar")
+// Animation elements (ids of sections in html) used in DOMContentLoaded event listener below
 
-let choiceArray = ["Rock", "Paper", "Scissors"]
-let playerWins = 0
-let computerWins = 0
-let playerHealth = 100
-let vilanHeatlth = 100
+    const mainGame = document.getElementById("main-game")
+    const houseAnimationImg = document.getElementById("house-animation-img")
+    const storyElOne = document.getElementById("story-el-one")
+    const storyElTwo = document.getElementById("story-el-two")
 
 
-
-
-let computerChoice = ""
-let playerChoice = ""
+// Change the dom load to only controle the animation **********************************************
 
 document.addEventListener("DOMContentLoaded", function(){
-    startGame()
-    chooseEl.innerText = `Player:  | Computer:`
-    winnerEl.innerText = `Choose above`
+    winnerEl.innerText = `Let's Go!`
     houseAnimationImg.style.display = "flex"
     
     setTimeout(function(){
@@ -48,86 +30,102 @@ document.addEventListener("DOMContentLoaded", function(){
         storyElTwo.style.display = "none"
         mainGame.style.display = "flex"
     }, 14000)
-
+    makeComputersChoice()
 
 })
 
-function startGame(){
-    computerChoice = choiceArray[makeRandomNumber(3)]
+// Const's and var's below are used in the game play below
+
+    // HTML elements
+
+        const winnerEl = document.getElementById("winner-el") // tells who won
+        const buttonSection = document.getElementById("button-section")  // rock, paper, scissor img section div
+        const playerProgressBar = document.getElementById("player-progress-bar") // health bar for player
+        const vilanProgressBar = document.getElementById("vilan-progress-bar") // health bar for computer
+
+    // Consts
+        
+        // This object of objects is used to compair and find winner
+
+            const winOrLoseArray = {
+                rock: {win: "scissors"},
+                paper: {win: "rock"},
+                scissors: {win: "paper"}
+            }
+        
+        // This is the computers choices
+
+            const choices = ["rock", "paper", "scissors"]
+
+    // Variables
+
+        let computerChoice = ""
+        let playerChoice = ""
+
+        let playerWins = 0
+        let computerWins = 0
+        let playerHealth = 100
+        let computerHeatlth = 100
+
+
+// Game Play
+
+    // Makes random number for the computer's initial choice
+       
+        function makeRandomNumber(x){
+            // This could be used for something else, but nothing else right now
+            return Math.floor(Math.random() * x)
+        }
+
+        function makeComputersChoice(){
+            computerChoice = choices[makeRandomNumber(3)]
+        }
+
+    // This finds which choice the player has made
+
+        buttonSection.addEventListener("click", function(e){
+            playerChoice = e.target.alt
+            checkWinner()
+        })
     
-}
+    // This compairs the player's and computer's choice with the winOrLoseArray above to find who won
+        function checkWinner(){
+        
+            if (computerChoice == playerChoice){
+                displayWinner("tie")
+            } else if (computerChoice == winOrLoseArray[playerChoice].win){
+                displayWinner("player wins")
+                playerWins += 1
+                computerHeatlth -= 20
+                vilanProgressBar.value = computerHeatlth
+                } else {
+                displayWinner("computer wins")
+                computerWins += 1
+                playerHealth -= 20
+                playerProgressBar.value = playerHealth
+                // change class to show animation
+            }
+            gameOver()
+        }
 
-function makeRandomNumber(x){
-    return Math.floor(Math.random() * x)
-}
+    // This changes the DOM to show winner
 
-rockEl.addEventListener("click", function(){
-    playerChoice = "Rock"
-    checkWinner()
-})
+        function displayWinner(x){
+            winnerEl.innerText = x
+        }
 
-paperEl.addEventListener("click", function(){
-    playerChoice = "Paper"
-    checkWinner()
-})
+    // This checks to see if the player or computer have won 5 times to end the game
 
-scissorEl.addEventListener("click", function(){
-    playerChoice = "Scissors"
-    checkWinner()
-})
+        function gameOver(){
+            if (playerWins == 5) {
+                winnerEl.innerText = "Player defeted bad guy"
+            } else if (computerWins == 5) {
+                winnerEl.innerText = "Bad guy defeated player"
+            } else {
+                makeComputersChoice()
+            }
+
+            // add an ending animation ************************************************************
+        }
 
 // Now go through and make the winnerEl.innertext cycle through the bad guy speaches *******************************
-
-function checkWinner(){
-    chooseEl.innerText = `Player: ${playerChoice} | Computer: ${computerChoice}`
-    if (playerHealth != 0){
-        if (playerChoice === computerChoice){
-            
-            winnerEl.innerText = "Tie"
-        } else if(playerChoice === choiceArray[0] && computerChoice === choiceArray[2]) {
-            
-            winnerEl.innerText = "Player wins"
-            playerWins += 1
-            vilanHeatlth -= 25
-            vilanProgressBar.value = vilanHeatlth
-        } else if(playerChoice === choiceArray[1] && computerChoice === choiceArray[0]){
-            
-            winnerEl.innerText = "Player wins"
-            playerWins += 1
-            vilanHeatlth -= 25
-            vilanProgressBar.value = vilanHeatlth
-        } else if (playerChoice === choiceArray[2] && computerChoice === choiceArray[1]){
-            
-            winnerEl.innerText = "Player wins"
-            playerWins += 1
-            vilanHeatlth -= 25
-            vilanProgressBar.value = vilanHeatlth
-        } else {
-            
-            winnerEl.innerText = "Computer wins"
-            computerWins += 1
-            playerHealth -= 25
-            playerProgressBar.value = playerHealth
-        }
-    } else {
-        winnerEl.innerText = "you loose"
-        // This needs to end game *************************************************************
-    }
-    setTimeout(function(){
-        startGame()
-        chooseEl.innerText = `Player:  | Computer:`
-        winnerEl.innerText = `Choose above`
-        
-        scoreEl.innerText = `Player score: ${playerWins} Computer score: ${computerWins}`
-    }, 1500)
-
-}
-
-// compair playerChoice and computerChoice
-// figure out how to compair the choices
-
-
-
-
-
-
