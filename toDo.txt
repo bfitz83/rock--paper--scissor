@@ -1,5 +1,5 @@
 DONE 1. refactor the new code 
      2. add the bad guy img
-     3. add the attack shake
+DONE 3. add the attack shake
      4. add the bad guy dialoge
      5. add ending animation

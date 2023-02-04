@@ -13,14 +13,21 @@
             <h1>Rock, Paper, Scissors</h1>
             <div class="choice-el">
                 <div class="players-charactures">
-                    <div>
-                        <img src="" alt="player-avatar">
+                    <div class="avatars">
+                        <div>
+                            <img src="images/player.jpg" alt="player-avatar" id="player-avatar" class="player-avatar">
+                            
+                        </div>
                         <progress id="player-progress-bar" value="100" max="100"></progress>
+
                     </div>
                     
                     
-                    <div>
-                        <img src="" alt="bad-guy-avatar">
+                    <div class="avatars">
+                        <div class="computer-img-dialog">
+                            <img src="images/computer.jpg" alt="bad-guy-avatar" id="computer-avatar" class="computer-avatar">
+                            <p class="computer-dialog" id="computer-dialog">Lets Go!</p>
+                        </div>
                         <progress id="vilan-progress-bar" value="100" max="100"></progress>
                     </div>
                 </div>
@@ -50,7 +57,7 @@
             </section>
 
             <section class="story-el-two" id="story-el-two">
-                <img src="" alt="bad-guy">
+                <img src="images/computer.jpg" alt="bad-guy">
                 <p>I am "generic bad guy". I will take over your vilage, <br> make your family my slaves, <br>
                     and steal the laces out of your left shoes unless you defeat me in...
                 </p>

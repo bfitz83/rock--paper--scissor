@@ -35,6 +35,32 @@ img:hover {
     opacity: 75%;
 }
 
+.player-avatar,
+.computer-avatar {
+    width: 75px;
+    height: 75px;
+}
+
+.computer-img-dialog {
+    display: flex;
+}
+
+.computer-img-dialog p {
+    max-width: 100px;
+    font-size: 10px;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.avatars{
+    display: flex;
+    flex-direction: column;
+}
+
 p {
     font-size: 1.5rem;
     font-weight: bolder;

@@ -9,3 +9,11 @@ export const badGuyLoosing = [
     "Aghhhhhh!",
     "We will see next round!"
 ]
+
+export const genericAtackSayings = {
+
+    rock: "Rock was effective",
+    scissors: "Scissors were damaging",
+    paper: "Paper, who would've thought?",
+    tie: "Go again"
+}
